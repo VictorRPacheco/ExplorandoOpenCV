@@ -18,16 +18,14 @@ def mouse_click(event, x, y, flags, param):
 
 	if event == cv2.EVENT_LBUTTONDOWN:
 		clickPoint = [x, y]
-		Y = clickPoint[0]
-		X = clickPoint[1]
 
 		# Print da posicao
 		print('----------------------')
 		print('Posicao [X, Y]:')
-		print(X, Y)
+		print(y, x)
 		
 		# Print da cor
-		color = (image[X,Y])
+		color = (image[y,x])
 		#Identidica se a imagem eh em tons de cinza
 		if color[0] == color[1] == color[2]:
 			print('Intensidade do pixel')
