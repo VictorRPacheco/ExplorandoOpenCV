@@ -2,10 +2,10 @@
 Trabalho 1 da matéria de "Princípios da visão computacional" do professor "Teófilo E. de Campos" da Universidade de Brasília
 
 ## Trabalho feito e testado em uma Oracle VM Virtual Box com:
-	+ Versão VM 6.0.4
-	+ Versão OS: Ubuntu 16.04 LTS 64-bits
-	+ Versão Python: 2.7
-	+ Versão OpenCV: 3.2.0
+	+Versão VM 6.0.4
+	+Versão OS: Ubuntu 16.04 LTS 64-bits
+	+Versão Python: 2.7
+	+Versão OpenCV: 3.2.0
 
 ## Para facilitar a correção os nomes dos arquivos correspondem aos requisitos do trabalho:
 	+ Requisito 1
@@ -28,5 +28,5 @@ Trabalho 1 da matéria de "Princípios da visão computacional" do professor "Te
 ## Para executar o código:
 	Para conseguir rodar o código em sua máquina é necessário possuir Python2 e OpenCV3 instalados. Além disso é nessário uma webcam para os código do Requisito4
 	Na pasta /src rode o comando pelo terminal:
-		'python RequisitoX.py'
-	Sendo 'X' o número referente ao código que se deseja executar
+		`python RequisitoX.py`
+	Sendo `X` o número referente ao código que se deseja executar
