@@ -5,7 +5,7 @@
 -> Quando clicado na imagem ideintifica onde foi o clique
 -> Idenfica a cor de onde foi clicado
 -> Calcula as cores similares a ela e detaca-as de vermelho
-Rode o codigo com -> python Requisito2.py
+Rode o codigo com -> python Trabalho.py
 Para rodar o codigo eh necessaria uma pasta ../data com um arquivo test.jpg
 
 Para sair pressione 'q'
@@ -62,44 +62,40 @@ if flag == 1 or flag == 2:
 			image = cv2.imread(file)
 		except:
 			print "Arquivo inválido, abortando"
-			cv2.destroyAllWindows()	
+			cv2.destroyAllWindows()
+	raw = image.copy()
+	cv2.namedWindow("Trabalho")
+	cv2.setMouseCallback("Trabalho", Cor_e_Posicao)
+
 
 if flag == 1:
 	print "╔═══════════════════════════════╗"
 	print "║	Para sair pressione 'q'	║"
 	print "╚═══════════════════════════════╝\n"
-	cv2.imshow("Requisito2", image)
-	cv2.setMouseCallback("Requisito2", Cor_e_Posicao)
+	cv2.imshow("Trabalho", raw)
 
 if flag == 2:
-	raw = image.copy()
-	
-	cv2.setMouseCallback("Requisito2", Cor_e_Posicao)
-
-	if color is not None:
-	        # Separa as 3 cores
-	        R = raw[:, :, 0].astype(np.uint8)
-	        G = raw[:, :, 1].astype(np.uint8)
-	        B = raw[:, :, 2].astype(np.uint8)
-	        # Calcula quais pixels serão marcados com base na distância euclidiana
-	        euclidiano = ((R - color[0]) ** 2) + ((G - color[1]) ** 2) + ((B - color[2]) ** 2)
-	        mask = euclidiano > (13 ** 2)
-	        image[np.where((mask).all(axis = 2))] = [0,0,255]
-		cv2.imshow("Requisito2", image)
-
-
-
-#image = np.zeros((400,400,3), dtype="uint8")
-
-
-#image[np.where((image==[77,37,139]).all(axis = 2))] = [0,0,255]
-#image[np.where(np.logical_and(LimiarBaixo <= image, image <= LimiarAlto))] = 0
-
-
-if cv2.waitKey() == ord('q'):
-	cv2.destroyAllWindows()
-
-# image[np.where((image==[0,0,0]).all(axis=2))] = [255,255,255]
+	while True:
+		cv2.imshow("Trabalho", raw)
+		if color is not None:
+		        # Separa as 3 cores
+		        R = raw[:, :, 0].astype(np.float32)
+		        G = raw[:, :, 1].astype(np.float32)
+		        B = raw[:, :, 2].astype(np.float32)
+		        raw = image.copy()
+		        # Calcula quais pixels serão marcados com base na distância euclidiana para imagens coloridas
+			if color[0] == color[1] == color[2]:
+			        euclidiano = ((R - color[0]) ** 2) + ((G - color[1]) ** 2) + ((B - color[2]) ** 2)
+			        mask = euclidiano < (13 ** 2)
+			# Calcula a diferenca de intensidade para imagens em tons de cinza
+			else:
+				diferenca = abs(R - color[0])
+				mask = diferenca < 13
+			raw[np.where(mask)] = [0,0,255]
+			color = None
+		if cv2.waitKey(25) & 0xFF == ord('q'):
+			cv2.destroyAllWindows()
+			break
 
 cv2.destroyAllWindows()
 
