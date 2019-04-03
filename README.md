@@ -29,9 +29,8 @@ Trabalho 1 da matéria de "Princípios da visão computacional" do professor "Te
 Para conseguir rodar o código em sua máquina é necessário possuir Python2 e OpenCV3 instalados. Além disso é nessário uma webcam para os código do Requisito4
 Na pasta /src rode o comando pelo terminal:
 ```
-	python RequisitoX.py
+	python Projeto1.py
 ```
-Sendo X o número referente ao código que se deseja executar
 
 ## Autor
 

@@ -48,7 +48,6 @@ if flag == 1 or flag == 2:
 	print "║	Escolha o arquivo de entrada	║"
 	print "╠═════════════════════╦═════════════════╣"
 	print "║ Imagem Colorida     ║ digite 1	║"
-	print "║ Imagem P&B	      ║ digite 2	║"
 	print "║ Escolher arquivo    ║ nome do arquivo	║"
 	print "║	Sair	      ║ digite 0	║"
 	file = raw_input("╚═════════════════════╩═════════════════╝\n")
@@ -57,13 +56,8 @@ if flag == 1 or flag == 2:
 		flag = 0
 	elif file == '1':
 		image = cv2.imread("../data/test.jpg")
-	elif file == '2':
-		image = cv2.imread("../data/testPeB.jpg")
 	else:
 		image = cv2.imread(file)
-	if image.empty():
-		print "Arquivo inválido, abortando"
-		cv2.destroyAllWindows()
 	raw = image.copy()
 	cv2.namedWindow("Trabalho")
 	cv2.setMouseCallback("Trabalho", Cor_e_Posicao)
@@ -114,9 +108,7 @@ elif flag == 3:
 		cv2.destroyAllWindows()
 		flag = 0
 	elif file == '1':
-		cap = cv2.VideoCapture('../data/test.avi')
-	elif file == '2':
-		cap = cv2.VideoCapture('../data/testPeB.avi')
+		cap = cv2.VideoCapture('../data/Test.avi')
 	else:
 		cap = cv2.VideoCapture(file)
 
@@ -133,7 +125,7 @@ if flag == 3 or flag == 4:
 	cv2.setMouseCallback("Trabalho", Cor_e_Posicao)
 	# Verifica se foi possivel abrir o arquivo
 	if (cap.isOpened()== False): 
-	 	print("Erro abrindo o arquivo")
+	 	print("Erro ao abrir")
 	 
 	# Le o video
 	while(cap.isOpened()):
